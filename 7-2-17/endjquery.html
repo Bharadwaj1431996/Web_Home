@@ -1,0 +1,37 @@
+<html>
+<head>
+<script src="jquery-3.1.1.min.js"></script>
+<script>src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+	<ul class="first">
+	  <li class="foo">list item 1</li>
+	  <li>list item 2</li>
+	  <li class="bar">list item 3</li>
+	</ul>
+	<ul class="second">
+	  <li class="foo">list item 1</li>
+	  <li>list item 2</li>
+	  <li class="bar">list item 3</li>
+	</ul>
+	<p><span>Hello</span>, how are you?</p>
+	<script>
+	console.log($( "ul" )
+			  .find( ".foo" )
+			    .css( "background-color", "red" )
+			  .end());
+		$( "ul" )
+			  .find( ".foo" )
+			    .css( "background-color", "red" )
+			  .end()
+			  .find( ".bar" )
+			    .css( "background-color", "green" )
+		$( "p" )
+				  .find( "span" )
+				  .end()
+				  .css( "border", "2px red solid" );
+	</script>
+</body>
+</html>

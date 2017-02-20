@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+	<h1 style="text-align: center;">Calculator</h1>
+	<p id="ans">Some</p>
+	<script>
+		var num="";
+		var num2="";
+		var c=0;
+		var num1="";
+	</script>
+	
+	<button onclick="equal()">=</button>
+	<table width="10%">
+	<tr>
+	<th><button onclick="getNumber(1)">1</button></th>
+	<th><button onclick="getNumber(2)">2</button></th>
+	<th><button onclick="getNumber(3)">3</button></th>
+	</tr>
+	<tr>
+	<th><button onclick="getNumber(4)">4</button></th>
+	<th><button onclick="getNumber(5)">5</button></th>
+	<th><button onclick="getNumber(6)">6</button></th>
+	</tr>
+	<tr>
+	<th><button onclick="getNumber(7)">7</button></th>
+	<th><button onclick="getNumber(8)">8</button></th>
+	<th><button onclick="getNumber(9)">9</button></th>
+	</tr>
+	<tr>
+	<th><button onclick="getNumber(0)">0</button></th>
+	<button onclick="getNumber(' + ')">+</button>
+	<button onclick="getNumber(' - ')">-</button>
+	<button onclick="getNumber(' * ')">*</button>
+	</tr>
+	<button onclick="getNumber(' / ')">/</button>
+	</table>
+	<script>
+		function getNumber(a)
+		{
+			{
+				num=num+a.toString();
+				console.log(num);
+				document.getElementById("ans").innerHTML = num;
+			}
+		}
+		function equal()
+		{
+			var i=0;
+			//var c= eval(num);
+			//document.getElementById("ans").innerHTML = c;
+			var delimiter = num.split(' ');
+			for(i=0;i<delimiter.length;i++)
+			{
+				console.log(delimiter[i]);
+			}
+			var a=delimiter[0];
+			var b=delimiter[2];
+			if(delimiter[1]=='+')
+			{
+				c=parseInt(a)+parseInt(b);
+			}
+			else if(delimiter[1]=='-')
+			{
+				c=parseInt(a)-parseInt(b);
+			}
+			else if(delimiter[1]=='*')
+			{
+				c=parseInt(a)*parseInt(b);
+			}
+			else if(delimiter[1]=='/')
+			{
+				c=parseInt(a)/parseInt(b);
+			}
+			
+			document.getElementById("ans").innerHTML = c;
+			num="";
+			num+=c;
+			delimiter[0]=c;
+		}
+	</script>
+</body>
+</html>

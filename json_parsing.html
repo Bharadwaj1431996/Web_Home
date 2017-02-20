@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+	json_parsing
+	</title>
+</head>
+<body>
+	<h1 style="text-align: center;">Json Parsing</h1>
+	<h3 id="great">Name will be displayed</h3>
+	<input type="text" id="txt"/>
+	<button onclick="showName()">Click me !</button>
+	<script>
+	function showName()
+	{
+		var myjson = '{"1":"38","4":"14","7":"17","9":"31", "19":"62","21":"42","28":"84","34":"54","60":"64","71":"91","73":"93","75":"95","78":"98","80":"100"}';
+
+		var myobj = JSON.parse(myjson);
+		var num = parseInt(document.getElementById("txt").value);
+		var names = myobj[num];
+		document.getElementById("great").innerHTML = names;
+	}
+	</script>
+</body>
+</html>

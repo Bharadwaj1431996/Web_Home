@@ -1,0 +1,17 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+	<p contenteditable="false" id="btn">Click me</p>
+	<script>
+		$("#btn").dblclick(function() 
+		{ 
+			alert( "Handler for .dblclick() called."); 
+			$("#btn").attr("contenteditable","true");
+			$("#btn").css("width","200px");	
+			$("#btn").attr(" word-wrap","break-word");
+		});
+	</script>
+</body>
+</html>

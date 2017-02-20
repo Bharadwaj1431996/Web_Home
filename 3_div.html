@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<body onload="multiply()">
+	
+	<div id="ladder" style="background-image: url(ladder.jpg);height: 500px;width: 500px; background-size: contain; position: absolute; " >
+	<div id="ladChild" style="height: calc( 100% - 8px );width: calc( 100% - 8px );margin: 4px 4px;">
+		
+
+	</div>
+		
+	</div>
+
+
+	<p id="ran" style="width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 220px;
+    left: 590px;">Welcome !!!</p>
+	
+    <script>var already_one=1;var player_one_place=0;var player_two_place=0;
+	var myjson = '{"1":"38","4":"14","17":"7","9":"31", "51":"67","24":"87", "62":"19","21":"42","28":"84","54":"34","64":"60","71":"91","93":"73","95":"75","78":"98","80":"100"}';
+    </script>
+
+	<button onclick="generate()" id="btn1" style="width: 150px;
+    height: 50px;
+
+    color: #f44336;
+    position: absolute;
+    top: 105px;
+    left: 590px;">A</button>
+	<button onclick="generate1()" id="btn2" style="width: 150px;
+    height: 50px;
+
+    color: ##3232ff;
+    position: absolute;
+    top: 285px;
+    left: 590px;">B</button>
+	
+    <script>
+	function generate1()
+	{
+		document.getElementById("btn1").disabled = false;
+		document.getElementById("btn2").disabled = true;
+		var myobj = JSON.parse(myjson);
+		var number_random =Math.floor((Math.random() * 6) + 1);
+		if(player_two_place+number_random<=100)
+		{
+			player_two_place+=number_random;
+		
+		var num = player_two_place;
+		if(myobj[num]=== undefined)
+		{
+			console.log("no elemennt");
+		}
+		else
+		{
+			var names = myobj[num];
+			player_two_place=parseInt(names);
+
+		}
+			
+		document.getElementById("ran").innerHTML = number_random;
+		
+			try
+			{
+				document.getElementById("p2").remove();
+			}
+			catch(err)
+			{
+				console.log(err);
+			}
+		}//if statement	
+			var div_str = "div"+player_two_place;
+			console.log(div_str);
+			console.log(player_two_place);
+			var div2 = document.createElement("div");
+			div2.style.width = "30px";
+			div2.style.height = "30px";
+			div2.id = "p2";
+			div2.style.background = "#4c4cff";
+			div2.style.color = "white";
+			div2.setAttribute("style","background: #4c4cff; height : 30px ;width:30px ;color: white;border-radius:50%;");
+			if(player_two_place+number_random<100)
+			{
+				document.getElementById(div_str).appendChild(div2);
+			}
+			if(player_two_place==100)
+			{
+				alert("B won the game");
+			}
+	}
+	</script>
+
+
+
+
+
+
+	<script>
+	function generate()
+	{
+		document.getElementById("btn1").disabled = true;
+		document.getElementById("btn2").disabled = false;
+		var myobj = JSON.parse(myjson);
+		var number_random =Math.floor((Math.random() * 6) + 1);
+		if(player_one_place+number_random<=100)
+		{
+			player_one_place+=number_random;
+		
+		var num = player_one_place;
+		if(myobj[num]=== undefined)
+		{
+			console.log("no elemennt");
+		}
+		else
+		{
+			var names = myobj[num];
+			player_one_place=parseInt(names);
+
+		}
+			
+		document.getElementById("ran").innerHTML = number_random;
+		
+			try
+			{
+				document.getElementById("p1").remove();
+			}
+			catch(err)
+			{
+				console.log(err);
+			}
+		}//if statement	
+			var div_str = "div"+player_one_place;
+			console.log(div_str);
+			console.log(player_one_place);
+			var div2 = document.createElement("div");
+			div2.style.width = "30px";
+			div2.style.height = "30px";
+			div2.id = "p1";
+			div2.style.background = "red";
+			div2.style.color = "white";
+			div2.setAttribute("style","background: red; height : 30px ;width:30px ;color: white;border-radius:50%;");
+			if(player_one_place+number_random<100)
+			{
+				document.getElementById(div_str).appendChild(div2);
+			}
+			if(player_one_place==100)
+			{
+				alert("A won the game");
+			}
+			
+	}
+	function multiply()
+	{
+		var k=10;
+		for(i=100;i>0;i--)
+		{	
+			var ladderEle = document.getElementById("ladChild");
+			var newdiv = document.createElement("div");
+			newdiv.id="div"+i;
+			newdiv.innerHTML=i;
+		//var newContent = document.createTextNode("Hi there and greetings!");
+			if(k<=10)
+			{
+				
+				
+				newdiv.setAttribute("style","background:rgba(95, 255, 51,0.15);height: 49px;width: 49px;float:left");
+				if(k==1)
+				{
+					k=21;
+				}
+			}
+			else
+			{
+				newdiv.setAttribute("style","background:rgba(95, 255, 51,0.15);height: 49px;width: 49px;float:right");	
+			}
+			k--;
+
+			ladderEle.appendChild(newdiv);
+			
+		}
+		//document.getElementById("div1").style.background = "#800000";
+	}
+	</script>
+</body>
+</html>

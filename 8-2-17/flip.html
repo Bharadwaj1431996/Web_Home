@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Sortable - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="jquery-3.1.1.min.js"></script>
+<script>src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
+<style>
+	div {
+	width:100px;
+	height:100px; 
+	background-color: red;
+	text-indent: 180px
+	}
+</style>
+</head>
+<body>
+	<div id='myDiv'></div>
+
+	<script>
+		console.log("here in animate");
+		$('#myDiv').animate({  textIndent: 0 }, {
+		step: function(go) {
+			console.log(go);
+		$(this).css('-moz-transform','rotateY('+go+'deg)');
+		$(this).css('-webkit-transform','rotateY('+go+'deg)');
+		$(this).css('-o-transform','rotateY('+go+'deg)');
+		$(this).css('transform','rotateY('+go+'deg)');
+		},
+		duration: 1000,
+		complete: function(){ console.log("done"); }
+		});
+
+	</script>
+</body>
+</html>

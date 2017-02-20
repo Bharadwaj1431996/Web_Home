@@ -1,0 +1,107 @@
+<html>
+<head>
+<style>
+.democlass {
+    color: red;
+}
+
+</style>
+ <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+	<div id="div1" style="border-style: dotted;position: absolute;">India</div>
+	<div id="div2" style="border-style: dotted;position: absolute;">Pakistan</div>
+
+	<script>
+		function createLine(vv)
+		{
+			console.log(vv);
+			var txt3 = document.createElement("div");
+    		
+    		txt3.setAttribute("id","line");
+    		txt3.setAttribute("size","100px");
+    		var siz=vv+"px";
+    		$(txt3).css("font-size",siz); 
+    		$(txt3).css("top",myJson["y1"]); 
+    		$(txt3).css("height",vv);
+    		$(txt3).css("position",'absolute');
+    		$(txt3).css("left",myJson["div1"]);
+    		$(txt3).css("border-left","1px solid red");
+    		console.log("created");
+    		
+			$("body").append(txt3);
+		}
+    	var line_height;
+		var myJson={"div1":0,"div2":0,"y1":0,"y2":0};
+		$("#div1").draggable
+		({
+			stop:function(event,ui)
+			{
+				var rect = document.getElementById("div1").getBoundingClientRect();
+					console.log(rect);
+				myJson["div1"]=rect.left;	
+				myJson["y1"]=rect.top;
+			}
+		});
+		$("#div2").draggable
+		({
+			stop:function(event,ui)
+			{
+				var rect = document.getElementById("div2").getBoundingClientRect();
+				console.log(rect);
+				myJson["div2"]=rect.left;
+				myJson["y2"]=rect.bottom;
+			}
+		});
+		$("#div1").draggable
+		({
+			drag:function(event,ui)
+			{
+				var rect = document.getElementById("div1").getBoundingClientRect();
+				myJson["div1"]=rect.left;
+				myJson["y1"]=rect.top;
+				if(myJson["div1"]==myJson["div2"])
+				{
+					line_height=Math.abs(myJson["y2"]-myJson["y1"]);
+					createLine(line_height);
+					console.log(myJson);
+				}
+				else
+				{
+					var div = document.getElementById('line');
+					if (div) 
+					{
+    						div.parentNode.removeChild(div);
+					}
+				}
+			}
+		});
+		$("#div2").draggable
+		({
+
+			drag:function(event,ui)
+			{
+				var rect = document.getElementById("div2").getBoundingClientRect();
+				myJson["div2"]=rect.left;
+				myJson["y2"]=rect.bottom;
+				if(myJson["div1"]==myJson["div2"])
+				{
+					line_height=Math.abs(myJson["y2"]-myJson["y1"]);
+					createLine(line_height);
+					console.log(myJson);
+				}
+				else
+				{
+					var div = document.getElementById('line');
+					if (div) 
+					{
+    						div.parentNode.removeChild(div);
+					}
+				}
+			}
+		});
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<html>
+<head>
+<script type="text/javascript" 
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript" 
+	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" 
+	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/themes/base/jquery-ui.css"/>
+</head>
+<body>
+	<div class="resizeDiv" id="0" onclick="ondiv('0')" style="position:absolute;top:0px; background: black;height:100px;width:100px;"></div>
+	<div class="resizeDiv" id="1" onclick="ondiv('1')" style="position:absolute;top:150px;background: green;height:100px;width:100px;"></div>
+	<div class="resizeDiv" id="2" onclick="ondiv('2')" style="position:absolute;top:300px;background: red;height:100px;width:100px;"></div>
+	<div id="geth" style="display: none">
+	<div name='ima'  class='ui-resizable-handle ui-resizable-n' style='display:none;background-color: cyan;z-index:3;border-radius:50%; width: 8px; height: 8px;'></div>
+	<div name='imageReSize' id="center2" id= purpose='cen' class='ui-resizable-handle ui-resizable-e' style='display:none;z-index:3;background-color: cyan;border-radius:50%; width: 8px; height: 8px;'></div>
+	<div name='ima'  class='ui-resizable-handle ui-resizable-s' style='display:none;background-color: cyan;border-radius:50%;z-index:3; width: 8px; height: 8px;'></div>
+	<div name='imageReSize' id="center1" purpose='cen' class='ui-resizable-handle ui-resizable-w' style='display:none;background-color: cyan;z-index:3;border-radius:50%; width: 8px; height: 8px;'></div>
+	<div name='imageReSize' class='ui-resizable-handle ui-resizable-ne' style='display:none;background-color: cyan;border-radius:50%;z-index:3; width: 8px; height: 8px;'></div>
+	<div name='imageReSize' class='ui-resizable-handle ui-resizable-se' style='display:none;background-color: cyan;border-radius:50%;z-index:3; width: 8px; height: 8px;bottom:-5px;right:-5px;'></div>
+	<div name='imageReSize' class='ui-resizable-handle ui-resizable-sw' style='display:none;background-color: cyan;border-radius:50%;z-index:3; width: 8px; height: 8px;'></div>
+	<div name='imageReSize' class='ui-resizable-handle ui-resizable-nw' style='display:none;background-color: cyan;border-radius:50%;z-index:3; width: 8px; height: 8px;'></div>
+	</div>
+	<p id="pone"></p>	
+	<script>
+	var temp=$("#geth").html();
+	var str=[0,1,2];
+	var cll=[3];
+	for(i in str)
+	{
+		var termin=$("#geth").clone(false).find("*[id]").andSelf().each(function() {cll[i]=$(this).html(); $(this).attr("id", $(this).attr("id") + str[i]); });
+		console.log(cll[i]);
+		var ele="#"+str[i];
+		$(ele).prepend(cll[i]);
+		$(ele).draggable();
+	}
+	function ondiv(ids)
+	{
+		var modi="#"+ids;
+		$(modi).show();
+		x(ids,"cen")
+	}
+function x(ids,pur)
+{
+	var modified="#"+ids;
+	console.log("modified "+modified);
+	var set_position = function(ids,width, height)
+	{
+      $("#center2"+ids).css('top', (height/2-4)+'px');//No i18N
+      $("#center1"+ids).css('top', (height/2-4)+'px');//No i18N
+	};
+		$(modified).resizable({
+        handles: {
+                'e':'.ui-resizable-e', //No i18N
+                'w':'.ui-resizable-w',//No i18N
+                'ne': '.ui-resizable-ne',//No i18N
+                'se': '.ui-resizable-se',//No i18N
+                'sw': '.ui-resizable-sw',//No i18N
+                'nw': '.ui-resizable-nw'//No i18N
+        },
+  	create: function( event, ui ) 
+  	{
+  		
+          var width = $(event.target).width();
+          var height = $(event.target).height();
+          set_position(width, height);
+  	},
+  resize: function(event, ui)
+  {
+          var width = $(event.target).width();
+          var height = $(event.target).height();
+          var id_for_save=jQuery(this).attr("id");
+          console.log("id_for_save "+id_for_save);
+          set_position(ids,width,height);
+      }});
+}
+	
+	</script>
+</body>
+</html>

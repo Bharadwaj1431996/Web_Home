@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		prime Number
+	</title>
+	<body>
+		<input type="Number" id="number"></input>
+
+		<button onclick="prime()" id="btn">Click</button>
+		<script>
+		function prime()
+		{
+			var n=document.getElementById("number").value;
+			var i=0;
+			var j=0;
+			var str='';
+			var count=2;
+			var isif=1;
+			for(i=4;i<n;i++)
+			{
+				isif=1;
+				for(j=2;j<=Math.floor(Math.sqrt(i));j++)
+				{
+					if(i%j==0)
+					{
+						console.log("i "+i +"j " +j);
+						isif=0;
+						break;
+					}
+					
+				}
+				if(isif==1)
+				{
+					count++;
+					str=str+" "+i;
+				}
+			}
+			console.log(count);
+			console.log(str);
+		}
+		</script>
+	</body>
+</head>
+</html>
